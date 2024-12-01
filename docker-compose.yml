@@ -1,5 +1,0 @@
-# dummy with service1
-services:
-  service1:
-    image: alpine:latest
-    command: sleep infinity

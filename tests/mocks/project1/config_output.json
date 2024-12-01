@@ -1,0 +1,68 @@
+{
+  "name": "project1",
+  "networks": {
+    "default": {
+      "name": "project1_default",
+      "ipam": {}
+    }
+  },
+  "services": {
+    "service1": {
+      "command": [
+        "sleep",
+        "infinity"
+      ],
+      "entrypoint": null,
+      "image": "busybox:latest",
+      "networks": {
+        "default": null
+      },
+      "ports": [
+        {
+          "mode": "ingress",
+          "target": 4001,
+          "published": "4000",
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "service2": {
+      "command": [
+        "sleep",
+        "infinity"
+      ],
+      "entrypoint": null,
+      "image": "busybox:latest",
+      "networks": {
+        "default": null
+      },
+      "ports": [
+        {
+          "mode": "ingress",
+          "target": 5001,
+          "published": "5000",
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "service3": {
+      "command": [
+        "sleep",
+        "infinity"
+      ],
+      "entrypoint": null,
+      "image": "busybox:latest",
+      "networks": {
+        "default": null
+      },
+      "ports": [
+        {
+          "mode": "ingress",
+          "target": 6001,
+          "published": "6000",
+          "protocol": "tcp"
+        }
+      ]
+    }
+  }
+}

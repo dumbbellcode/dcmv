@@ -1,0 +1,26 @@
+# service with very small image for unit test
+services:
+  service1:
+    image: busybox:latest
+    volumes:
+      - "./service1:/code"
+    ports:
+      - "4000:4001"
+    command: sleep infinity
+  service2:
+    image: busybox:latest
+    volumes:
+      - "./service2:/code"
+    ports:
+      - "5000:5001"
+    command: sleep infinity
+  # service3 is like a postgres database
+  service3:
+    ports:
+      - "6000:6001"
+    image: busybox:latest
+    command: sleep infinity
+
+networks:
+  my-network:
+    driver: bridge

@@ -1,0 +1,10 @@
+# Connection to service1 (using internal port from docker-compose.yml)
+SERVICE1_URL=http://service1:4001/
+
+# Connection to service3 (Postgres database with internal port)
+SERVICE3_URL=postgresql://dbuser:dbpass@service3:6001/mydb
+
+# Dummy environment variable for testing
+DUMMY_VAR_2=test_value
+
+# Dummy comment service2
