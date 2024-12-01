@@ -6,7 +6,35 @@ inside/outside docker.
 `dcmv` is short for docker-compose move. 
 `dcmv` is useful in case you need to run certain containers outside docker for faster debugging or for tooling reasons. 
 
-## Install 
+## Usage
+Run it in the directory which has your docker-compose file.
+
+When running service named `service1` outside Docker, run:
+
+```bash
+dcmv --out --s service1
+```
+
+When running a service named `service2` inside Docker, which was initially being run from 
+outside, run:
+
+```bash
+dcmv --in --s service2
+```
+
+## Installation (Deno)
+
+```
+deno install --global -A -f jsr:@dcode/dcmv
+```
+
+## Installation (Node)
+
+```
+npx jsr i @dcode/dcmv
+```
+
+## Install (binaries)
 
 | Platform       | Download Link          |
 |----------------|------------------------|
@@ -17,25 +45,6 @@ inside/outside docker.
 
 After installation change binary name to `dcmv` and add it to $PATH
 
-## Run from source
-
-1. Make sure you have `Deno` installed on your system
-2. Clone and compile to native binary
-```sh
-git clone https://github.com/sudheer121/dcmv.git
-cd dcmv
-deno run compile
-```
-3. Add to $PATH
-```sh
-mkdir -p $HOME/.dcmv
-mv ./dcmv $HOME/.dcmv
-
-# Replace ~/.zshrc with your profile: ~/.bashrc, ~/.profile, etc
-echo 'export PATH="$PATH:$HOME/.dcmv"' >> ~/.zshrc
-source ~/.zshrc
-```
-
 ## Features
 
 - Automatically updates environment variables in `.env` files based on the
@@ -44,20 +53,6 @@ source ~/.zshrc
 - Supports multiple services and their dependencies.
 
 
-## Usage Examples
-Run it in the directory which has your docker-compose file.
-
-To move a service named `service1` outside Docker, run:
-
-```bash
-dcmv --out --s service1
-```
-
-To move a service named `service2` inside Docker, run:
-
-```bash
-dcmv --in --s service2
-```
 
 ## Contributing
 
