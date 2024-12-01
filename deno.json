@@ -2,7 +2,7 @@
   "name": "@dcode/dcmv",
   "version": "1.0.1",
   "description": "Automatically update .env references to other containers when moving a container outside/inside docker",
-  "exports": "./src/cli.ts",
+  "exports": "./src/main.ts",
   "publish": {
     "include": [
       "README.md",
@@ -10,12 +10,12 @@
     ]
   },
   "tasks": {
-    "dev": "deno run -A src/cli.ts",
-    "compile": "deno compile -A  --output ./dcmv src/cli.ts",
+    "dev": "deno run -A src/main.ts",
+    "compile": "deno compile -A  --output ./dcmv src/main.ts",
     "test": "deno test -A tests",
     "fmt": "deno fmt",
     "lint": "deno lint",
-    "dev:inspect": "deno run --watch src/cli.ts"
+    "dev:inspect": "deno run --watch src/main.ts"
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@1",
