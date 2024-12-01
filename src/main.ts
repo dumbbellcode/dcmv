@@ -10,6 +10,10 @@ function main(): void {
     Arguments.printHelp();
     return;
   }
+  if (flags.version) {
+    Arguments.printVersion();
+    return;
+  }
 
   Arguments.validate(flags);
 

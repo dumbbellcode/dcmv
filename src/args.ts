@@ -2,6 +2,7 @@ import { parseArgs } from "jsr:@std/cli@1.0.7/parse-args";
 import type { Args } from "jsr:@std/cli@1.0.7/parse-args";
 import { attemptToFindComposeFileInCurrentDir, exists } from "./utils/misc.ts";
 import chalk from "chalk";
+const VERSION = '1.0.1';
 
 export class Arguments {
   public static parse(args: string[]): Args {
@@ -17,6 +18,7 @@ export class Arguments {
 
     // And a list of aliases
     const alias = {
+      "version": "v",
       "help": "h",
       "service": "s",
       "path": "p",
@@ -32,8 +34,8 @@ export class Arguments {
   }
 
   public static printHelp(): void {
-    console.log("Usage: dcmv [options]");
-    console.log("Options:");
+    console.log(`${chalk.blue('Usage:')} dcmv [options]`);
+    console.log(chalk.blue("\nOptions:"));
     console.log("  --help, -h        Print help");
     console.log("  --out             Move service outside docker");
     console.log("  --in              Move service inside docker");
@@ -42,11 +44,22 @@ export class Arguments {
       "  --path, -p        Absolute path to docker-compose.yml if compose file doesn't exist in pwd",
     );
     // Examples
-    console.log("Examples:");
+    console.log(chalk.blue("\nExamples:"));
     console.log("dcmv --out -s service1");
   }
 
+  public static printVersion(): void {
+    console.log(`${chalk.blue('Version:')} ${chalk.green(VERSION)} \n`);
+  }
+
   public static validate(flags: Args) {
+    // publish version if no argument passed
+    if (Deno.args.length === 0) {
+      Arguments.printVersion();
+      Arguments.printHelp();
+      Deno.exit(0);
+    }
+
     if (flags.path && !exists(flags.path)) {
       console.log(chalk.red(`\n Compose file ${flags.path} does not exist`));
       Deno.exit(0);
@@ -57,7 +70,7 @@ export class Arguments {
       if (!dcPath) {
         console.log(
           chalk.red(
-            `\n Compose file not found in current directory. Pass -p compose_file_path`,
+            `\n docker_compose.yml file not found in current directory. Pass -p compose_file_path`,
           ),
         );
         Deno.exit(0);
