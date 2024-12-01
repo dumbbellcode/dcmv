@@ -1,14 +1,7 @@
-# Run the code
+# dcmv
 
-```bash
-deno run --env-file .env -A src/main.ts
-```
+Update .env references to other containers when running a container from outside docker.
 
-# Docker Service Migration Utility
-
-A utility to simplify the process of moving services in and out of Docker
-containers. This tool helps in updating environment variables in `.env` files to
-ensure a smooth transition between environments.
 
 ## Features
 
@@ -22,7 +15,7 @@ ensure a smooth transition between environments.
 To use this utility, run the following command in your terminal:
 
 ```bash
-deno run -A src/main.ts
+deno run -A src/cli.ts
 ```
 
 This will start the utility and guide you through the process of moving services
@@ -42,13 +35,13 @@ The utility accepts the following options:
 To move a service named `service1` outside Docker, run:
 
 ```bash
-deno run src/main.ts --out --s service1
+deno run src/cli.ts --out --s service1
 ```
 
 To move a service named `service2` inside Docker, run:
 
 ```bash
-deno run src/main.ts --in --s service2
+deno run src/cli.ts --in --s service2
 ```
 
 ## Contributing
