@@ -1,4 +1,4 @@
-import { Container } from "./container.ts";
+import type { Container } from "./container.ts";
 import type { AllEnvDiff } from "./types.ts";
 import { prettyPrintAllEnvDiff } from "./utils/misc.ts";
 import chalk from "chalk";

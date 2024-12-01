@@ -1,8 +1,8 @@
-import { Container } from "./container.ts";
+import type { Container } from "./container.ts";
 import { getDockerComposeConfig } from "./commands/get_dc_config.ts";
 import { ContainerMovement } from "./container_movement.ts";
 import { Arguments } from "./args.ts";
-import { getFileThatExists } from "./utils/misc.ts";
+import chalk from "chalk";
 
 function main(): void {
   const flags = Arguments.parse(Deno.args);
@@ -23,7 +23,9 @@ function main(): void {
   );
 
   if (!targetContainer) {
-    console.error(`Service ${targetService} not found in docker-compose`);
+    console.error(
+      chalk.red(`\n Service ${targetService} not found in docker-compose`),
+    );
     return;
   }
 
