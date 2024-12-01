@@ -9,8 +9,10 @@ inside/outside docker.
 ## Run from source
 
 1. Make sure you have `Deno` installed on your system
-2. Compile to native binary
+2. Clone and compile to native binary
 ```sh
+git clone https://github.com/sudheer121/dcmv.git
+cd dcmv
 deno run compile
 ```
 3. Add to $PATH
