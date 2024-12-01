@@ -13,22 +13,7 @@ function main(): void {
 
   Arguments.validate(flags);
 
-  let composePath = flags.path;
-  if (!composePath) {
-    const cwd = Deno.cwd();
-    composePath = getFileThatExists([
-      `${cwd}/docker-compose.yml`,
-      `${cwd}/docker-compose.yaml`,
-    ]);
-  }
-
-  if (!composePath) {
-    console.error(
-      "docker-compose.yml not found in current directory, please pass it's path using --path argument",
-    );
-    return;
-  }
-
+  const composePath = flags.path;
   const targetService = flags.service;
   const containers: Container[] = (getDockerComposeConfig(composePath))
     .getContainers();

@@ -46,3 +46,11 @@ export function exists(filePath: string) {
     return false;
   }
 }
+
+export function attemptToFindComposeFileInCurrentDir() {
+  const cwd = Deno.cwd();
+  return getFileThatExists([
+    `${cwd}/docker-compose.yml`,
+    `${cwd}/docker-compose.yaml`,
+  ]);
+}

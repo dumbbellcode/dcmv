@@ -1,6 +1,6 @@
 import type { Args } from "https://deno.land/std@0.200.0/flags/mod.ts";
 import { parse } from "https://deno.land/std@0.200.0/flags/mod.ts";
-import { exists } from "./utils/misc.ts";
+import { attemptToFindComposeFileInCurrentDir, exists } from "./utils/misc.ts";
 import chalk from "chalk";
 
 export class Arguments {
@@ -48,6 +48,17 @@ export class Arguments {
       console.log(chalk.red(`\n Compose file ${flags.path} does not exist`));
       Deno.exit(0);
     }
+
+    if(!flags.path) {
+      const dcPath = attemptToFindComposeFileInCurrentDir();
+      if(!dcPath) {
+        console.log(chalk.red(`\n Compose file not found in current directory. Pass --p compose_file_path`));
+        Deno.exit(0);
+      }
+      flags.path = dcPath;
+    }
+
+
 
     if (!flags.service) {
       console.log(
